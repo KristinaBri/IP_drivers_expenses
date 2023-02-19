@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Expense;
+use App\Services\DriverExpenseService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\View\View;
 
 class ExpenseController extends Controller
 {
@@ -41,12 +43,18 @@ class ExpenseController extends Controller
         return redirect()->route('expenses.index');
     }
 
+    //For automatic injection
+
+    public function __construct(
+        protected DriverExpenseService $expense,
+    ) {}
+
     /**
      * Display the specified resource.
      */
-    public function show(Expense $expense): Response
+    public function show(Expense $expense): View
     {
-        //
+
     }
 
     /**
